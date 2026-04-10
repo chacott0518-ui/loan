@@ -1,65 +1,77 @@
-import Image from "next/image";
+import { Footer } from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
+import { ContactForm } from "@/components/sections/ContactForm";
+import { Eligibility } from "@/components/sections/Eligibility";
+import { Features } from "@/components/sections/Features";
+import { Hero } from "@/components/sections/Hero";
+import { LtvCalculator } from "@/components/sections/LtvCalculator";
+import { RateGuide } from "@/components/sections/RateGuide";
+import { WhyWelcome } from "@/components/sections/WhyWelcome";
+import { SectionReveal } from "@/components/motion/SectionReveal";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <>
+      <Header />
+      <main className="flex-1">
+        <Hero />
+        <Features />
+        <WhyWelcome />
+
+        <SectionReveal
+          id="ltv"
+          className="scroll-mt-24 min-h-screen border-b border-neutral-200/80 bg-white py-20"
+          delay={0.04}
+        >
+          <div className="mx-auto max-w-container space-y-12 px-4 sm:px-6 lg:px-8">
+            <div>
+              <h2 className="text-2xl font-bold text-brand-secondary sm:text-3xl">
+                LTV / 금리표
+              </h2>
+              <p className="mt-4 max-w-2xl text-neutral-600">
+                담보 유형·지역 권역·CB 신용점수·LTV 비중에 따라 조건이 달라질 수
+                있습니다. 아래 도표는 이미지 4 매트릭스를 반영한 참고용 도구이며,
+                실제 승인 결과는 웰컴저축은행 심사 및 약관에 따릅니다.
+              </p>
+            </div>
+            <LtvCalculator />
+            <RateGuide />
+          </div>
+        </SectionReveal>
+
+        <SectionReveal
+          id="eligibility"
+          className="scroll-mt-24 min-h-screen border-b border-neutral-200/80 bg-neutral-50/80 py-20"
+          delay={0.06}
+        >
+          <Eligibility />
+        </SectionReveal>
+
+        <SectionReveal
+          id="consult"
+          className="scroll-mt-24 min-h-screen bg-gradient-to-b from-white to-brand-accent/15 py-20"
+          delay={0.08}
+        >
+          <div className="mx-auto max-w-container px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl font-bold text-brand-secondary sm:text-3xl">
+              상담 · 한도 조회
+            </h2>
+            <p className="mt-4 max-w-2xl text-neutral-600">
+              아래 양식을 제출하시면 이석형 대표가 순차적으로 연락드립니다. 급한
+              상담은{" "}
+              <a
+                href="tel:01063279227"
+                className="font-semibold text-brand-secondary underline-offset-2 hover:text-brand-primary hover:underline"
+              >
+                010-6327-9227
+              </a>
+              으로 직접 전화 주실 수 있습니다.
+            </p>
+            <ContactForm />
+          </div>
+        </SectionReveal>
       </main>
-    </div>
+      <Footer />
+    </>
   );
 }
