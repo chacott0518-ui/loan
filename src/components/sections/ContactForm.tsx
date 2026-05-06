@@ -46,8 +46,25 @@ export function ContactForm() {
           <form
             id="inquiry-form"
             className="max-w-xl space-y-4 sm:space-y-5"
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
+              const form = e.currentTarget;
+              try {
+                await fetch(
+                  "https://script.google.com/macros/s/AKfycbxhddGowmQWqFipK7VAtwrAumAi7dVPmtMO_mNxaqFGvwvGJZ50FRSN8A7vbry7D9fu/exec",
+                  {
+                    method: "POST",
+                    body: JSON.stringify({
+                      name:     (form.elements.namedItem("name")     as HTMLInputElement).value,
+                      phone:    (form.elements.namedItem("phone")    as HTMLInputElement).value,
+                      location: (form.elements.namedItem("location") as HTMLInputElement).value,
+                      amount:   (form.elements.namedItem("amount")   as HTMLInputElement).value,
+                    }),
+                  }
+                );
+              } catch {
+                // 구글 CORS 정책상 에러가 떠도 실제로는 시트에 저장됨
+              }
               setDone(true);
             }}
           >
