@@ -1,106 +1,93 @@
 import Link from "next/link";
 
-const SITEMAP = [
-  { href: "/#product", label: "상품안내" },
-  { href: "/#ltv", label: "LTV/금리표" },
-  { href: "/#eligibility", label: "자격확인" },
-  { href: "/#consult", label: "상담예약" },
-  { href: "/resources/business-loan-routing", label: "자격·절차 요약" },
-  { href: "/resources/welcome-ltv-guide", label: "LTV·금리 가이드" },
-  { href: "/api/rss", label: "RSS" },
-] as const;
-
 export function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="min-h-screen border-t border-neutral-200 bg-neutral-50 py-20">
-      <div className="mx-auto flex max-w-container flex-col gap-12 px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-4">
-          <p className="text-xs font-semibold uppercase tracking-widest text-brand-primary">
+    <footer className="border-t border-neutral-200 bg-neutral-50">
+      <div className="mx-auto max-w-container px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+
+        {/* 회사명 */}
+        <div className="mb-10 flex flex-col gap-1">
+          <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-brand-primary sm:text-xs">
             Company
           </p>
-          <h2 className="text-2xl font-bold text-brand-secondary">
+          <h2 className="text-xl font-bold text-brand-secondary sm:text-2xl">
             이론글로벌(주)
-            <span className="mt-1 block text-base font-medium text-neutral-600">
-              Theoretical Global Co., Ltd.
-            </span>
           </h2>
+          <span className="text-sm font-medium text-neutral-500">
+            Eloan Global.corp
+          </span>
         </div>
 
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+        {/* 2열 그리드: 회사정보 + 연락처 */}
+        <div className="grid gap-8 sm:grid-cols-2 lg:gap-12">
+
+          {/* 왼쪽: 회사 기본 정보 */}
           <dl className="space-y-4 text-sm text-neutral-700">
             <div>
-              <dt className="font-semibold text-brand-secondary">대표이사</dt>
+              <dt className="text-xs font-semibold text-brand-secondary">대표이사</dt>
               <dd className="mt-1">이석형 (Lee Seok-hyung)</dd>
             </div>
             <div>
-              <dt className="font-semibold text-brand-secondary">본점 소재지</dt>
+              <dt className="text-xs font-semibold text-brand-secondary">본점 소재지</dt>
               <dd className="mt-1 leading-relaxed">
-                사업자등록증(법인등기부등본)에 기재된 본점 주소와 동일합니다.
-                세부 주소·등록번호는 대표번호로 문의 시 안내드립니다.
+                서울특별시 중구 을지로 211, 3층 301호
               </dd>
             </div>
             <div>
-              <dt className="font-semibold text-brand-secondary">
+              <dt className="text-xs font-semibold text-brand-secondary">
                 사업자등록번호
               </dt>
-              <dd className="mt-1">
-                사업자등록증상 등록번호와 동일하며, 공개가 필요한 경우
-                대표번호로 요청해 주세요.
-              </dd>
+              <dd className="mt-1">20-00001467</dd>
             </div>
           </dl>
 
+          {/* 오른쪽: 연락처 */}
           <div className="space-y-4 text-sm text-neutral-700">
-            <p className="font-semibold text-brand-secondary">고객 문의 · 대표 연락</p>
-            <p>
-              <span className="text-neutral-500">대표이사 이석형</span>
+            <p className="text-xs font-semibold text-brand-secondary">
+              고객 문의 · 대표 연락
+            </p>
+
+            {/* 대표번호 */}
+            <div className="space-y-2">
+              <p className="text-xs text-neutral-500">대표번호</p>
+              <a
+                href="tel:0269561238"
+                className="flex items-center gap-2 text-lg font-bold text-brand-secondary transition hover:text-brand-primary"
+                aria-label="대표번호 02-6956-1238"
+              >
+                <svg viewBox="0 0 24 24" className="h-4 w-4 text-brand-primary" fill="currentColor" aria-hidden>
+                  <path d="M6.6 10.8c1.2 2.4 3 4.5 5.4 5.4l1.8-1.8c.3-.3.8-.4 1.2-.2 1 .3 2.1.5 3.2.5.7 0 1.2.6 1.2 1.2V20c0 .7-.6 1.2-1.2 1.2C10.9 21.2 3.8 14.1 3.8 5.2 3.8 4.5 4.3 4 5 4h3.5c.7 0 1.2.6 1.2 1.2 0 1.1.2 2.2.5 3.2.1.4 0 .9-.3 1.2l-1.8 1.2z" />
+                </svg>
+                02-6956-1238
+              </a>
+            </div>
+
+            {/* 모집법인 안내 */}
+            <div className="rounded-xl border border-brand-accent/40 bg-white/80 px-4 py-3 text-xs leading-relaxed text-neutral-600">
+              위 사람은 웰컴저축은행과 위탁계약을 체결한 이론글로벌(주)
+              모집법인에 소속되어 있으며 저축은행중앙회 등록업체입니다.
               <br />
               <a
-                href="tel:01063279227"
-                className="text-lg font-bold text-brand-secondary transition hover:text-brand-primary"
+                href="https://www.loanconsultant.or.kr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-1 inline-block text-brand-secondary underline underline-offset-2 hover:text-brand-primary"
               >
-                010-6327-9227
+                대출모집법인조회 확인하기
               </a>
-            </p>
-            <p className="rounded-xl border border-brand-accent/40 bg-white/80 p-4 text-xs leading-relaxed text-neutral-600">
-              <strong className="font-semibold text-brand-secondary">
-                Welcome Savings Bank official partner 모집법인
-              </strong>
-              <br />
-              본 홈페이지는 웰컴저축은행의 공식 모집법인으로서 안내
-              목적으로 운영됩니다. 금융상품의 계약·승인·지급은 웰컴저축은행의
-              심사 및 규정에 따릅니다.
-            </p>
+              {" "}· 웰컴저축은행 고객센터{" "}
+              <a href="tel:16610001" className="font-semibold text-brand-secondary hover:text-brand-primary">
+                1661-0001
+              </a>
+            </div>
           </div>
-
-          <nav aria-label="사이트맵" className="text-sm">
-            <p className="mb-3 font-semibold text-brand-secondary">바로가기</p>
-            <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
-              {SITEMAP.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-neutral-600 underline-offset-4 transition hover:text-brand-secondary hover:underline"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link
-                  href="/"
-                  className="text-neutral-600 underline-offset-4 transition hover:text-brand-secondary hover:underline"
-                >
-                  홈
-                </Link>
-              </li>
-            </ul>
-          </nav>
         </div>
 
-        <p className="border-t border-neutral-200 pt-8 text-xs leading-relaxed text-neutral-500">
-          © {new Date().getFullYear()} Theoretical Global Co., Ltd. All rights
-          reserved.
+        {/* 저작권 */}
+        <p className="mt-12 border-t border-neutral-200 pt-6 text-xs leading-relaxed text-neutral-500">
+          © {currentYear} Eloan Global.corp Co., Ltd. All rights reserved.
         </p>
       </div>
     </footer>
