@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     title,
     description,
     images: [{
-      url: "/og-image.jpg",
+      url: "/images/og-image.png",
       width: 1200,
       height: 630,
       alt: "이론글로벌(주) × 웰컴저축은행 사업자담보대출",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title,
     description,
-    images: ["/og-image.jpg"],
+    images: ["/images/og-image.png"],
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION ?? "",
