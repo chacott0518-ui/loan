@@ -37,7 +37,7 @@ export function Footer() {
             </div>
             <div>
               <dt className="text-xs font-semibold text-brand-secondary">
-                사업자등록번호
+                등록번호
               </dt>
               <dd className="mt-1">20-00001467</dd>
             </div>
