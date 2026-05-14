@@ -30,7 +30,7 @@ export const REGION_META: Record<RegionGrade, { title: string; subtitle: string 
   "1st": { title: "1급지 (핵심 권역)", subtitle: "서울 핵심·과천·구리·하남·안양 동안 등" },
   "2nd": { title: "2급지",            subtitle: "서울 생활권·수도권 주요 도시" },
   "3rd": { title: "3급지",            subtitle: "경기 외곽·지방 중심지" },
-  etc: { title: "기타 (Etc.)", subtitle: "서울·경기만 급지 표시 있고 그 외 지역은 LTV 모두 60%" },
+  etc: { title: "기타 (Etc.)", subtitle: "서울·경기만 급지 표시 있고 그 외 지역은 LTV 모두 70%" },
 };
 
 export type LocationItem = {
@@ -135,10 +135,10 @@ export const LTV_MATRIX: Record<RegionGrade, Record<CreditTierKey, LtvCell>> = {
     t8plus: { kind: "range", min: 52, max: 58 },
   },
   etc: {
-    t1_4:   { kind: "fixed", value: 60, repaymentNote: "원리금균등분할상환 적용 (상품규정 준수)" },
-    t5:     { kind: "fixed", value: 60, repaymentNote: "원리금균등분할상환 적용 (상품규정 준수)" },
-    t6_7:   { kind: "fixed", value: 60, repaymentNote: "원리금균등분할상환 적용 (상품규정 준수)" },
-    t8plus: { kind: "fixed", value: 60, repaymentNote: "원리금균등분할상환 적용 (상품규정 준수)" },
+    t1_4:   { kind: "fixed", value: 70, repaymentNote: "원리금균등분할상환 적용 (상품규정 준수)" },
+    t5:     { kind: "fixed", value: 70, repaymentNote: "원리금균등분할상환 적용 (상품규정 준수)" },
+    t6_7:   { kind: "fixed", value: 70, repaymentNote: "원리금균등분할상환 적용 (상품규정 준수)" },
+    t8plus: { kind: "fixed", value: 70, repaymentNote: "원리금균등분할상환 적용 (상품규정 준수)" },
   },
 };
 
@@ -203,7 +203,7 @@ export function describeLtvForUi(
 
   if (cell.kind === "fixed") {
     return {
-      headline: `LTV ${cell.value}% (단일 적용)`,
+      headline: `기타 지역(서울·경기 외) LTV ${cell.value}% 적용`, // 이 부분이 화면 상단에 나옵니다.
       sub: cell.repaymentNote,
       ltvMidpoint: cell.value,
       isEtc: true,

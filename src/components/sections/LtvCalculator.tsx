@@ -178,13 +178,20 @@ export function LtvCalculator() {
             </div>
 
             {ltvDesc.sub && (
-              <p className="rounded-xl border border-brand-accent/40 bg-brand-accent/15 px-4 py-3 text-sm leading-relaxed text-brand-secondary">
-                {ltvDesc.isEtc
-                  ? <><strong className="font-bold">상환 조건:</strong><br />{ltvDesc.sub}</>
-                  : ltvDesc.sub
-                }
-              </p>
-            )}
+  <p className="rounded-xl border border-brand-accent/40 bg-brand-accent/15 px-4 py-3 text-sm leading-relaxed text-brand-secondary">
+    {ltvDesc.isEtc
+      ? (
+        <>
+          <strong className="font-bold">상환 조건:</strong><br />
+          {ltvDesc.sub}
+          <br />
+          <span className="mt-1 inline-block text-blue-600 font-bold">대출금액 최대 5천만원</span>
+        </>
+      )
+      : ltvDesc.sub
+    }
+  </p>
+)}
           </motion.div>
 
           {/* LTV 바 */}
